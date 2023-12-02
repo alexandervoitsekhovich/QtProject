@@ -1,6 +1,5 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QInputDialog, QApplication
-from PyQt5.QtWidgets import QInputDialog
+from PyQt5.QtWidgets import *
 import sys
 import random
 
@@ -9,22 +8,39 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
-class StartPage(QWidget):
+class StartPage(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("startPage.ui", self)
         self.startButton.clicked.connect(self.run_dialogue)
+        self.timeModeButton.toggled.connect(self.time_mode)
+        self.resultsButton.clicked.connect(self.show_results)
+
+    def time_mode(self):
+        if self.timeModeButton.isChecked():
+            ...
+        else:
+            ...
+
+    def show_results(self):
+        ...
+
+    def run_eight(self):
         self.window_eight = Eight()
+        self.window_eight.show()
+
+    def run_fifteen(self):
         self.window_fifteen = Fifteen()
+        self.window_fifteen.show()
 
     def run_dialogue(self):
         game_mode, ok_pressed = QInputDialog.getItem(self, "Выберите режим", "Выбор режима",
                                                      ("16 клеток", "8 клеток"), 1, False)
         if ok_pressed:
             if game_mode == "8 клеток":
-                self.window_eight.show()
+                self.run_eight()
             else:
-                self.window_fifteen.show()
+                self.run_fifteen()
 
 
 class Eight(QWidget):
