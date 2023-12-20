@@ -208,7 +208,29 @@ class Fifteen(QWidget):
                 msg.setWindowTitle("Error!")
                 msg.setText("Invalid move option!")
                 msg.exec_()
-        elif x in range(147, 255) and y in range(20, 135):
+        elif x in range(220, 301) and y in range(20, 135):
+            move = self.move_button()
+            if move == "Down":
+                txt = self.button12.text()
+                self.button12.setText(self.button02.text())
+                self.button02.setText(txt)
+                self.board[0, 2], self.board[1, 2] = self.board[1, 2], self.board[0, 2]
+            elif move == "Right":
+                txt = self.button03.text()
+                self.button03.setText(self.button02.text())
+                self.button02.setText(txt)
+                self.board[0, 2], self.board[0, 3] = self.board[0, 3], self.board[0, 2]
+            elif move == "Left":
+                txt = self.button01.text()
+                self.button01.setText(self.button02.text())
+                self.button02.setText(txt)
+                self.board[0, 2], self.board[0, 1] = self.board[0, 1], self.board[0, 2]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(120, 201) and y in range(20, 135):
             move = self.move_button()
             if move == "Down":
                 txt = self.button11.text()
