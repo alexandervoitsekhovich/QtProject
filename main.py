@@ -313,6 +313,28 @@ class Fifteen(QWidget):
                 self.button11.setText(self.button10.text())
                 self.button10.setText(txt)
                 self.board[1, 0], self.board[1, 1] = self.board[1, 1], self.board[1, 0]
+        elif x in range(220, 301) and y in range(154, 268):
+            move = self.move_button()
+            if move == "Up":
+                txt = self.button12.text()
+                self.button12.setText(self.button02.text())
+                self.button02.setText(txt)
+                self.board[0, 2], self.board[1, 2] = self.board[1, 2], self.board[0, 2]
+            elif move == "Down":
+                txt = self.button12.text()
+                self.button12.setText(self.button22.text())
+                self.button22.setText(txt)
+                self.board[2, 2], self.board[1, 2] = self.board[1, 2], self.board[2, 2]
+            elif move == "Right":
+                txt = self.button12.text()
+                self.button12.setText(self.button13.text())
+                self.button13.setText(txt)
+                self.board[1, 3], self.board[1, 2] = self.board[1, 2], self.board[1, 3]
+            else:
+                txt = self.button12.text()
+                self.button12.setText(self.button11.text())
+                self.button11.setText(txt)
+                self.board[1, 2], self.board[1, 1] = self.board[1, 1], self.board[1, 1]
 
     def move_button(self):
         move, ok_pressed = QInputDialog.getItem(
