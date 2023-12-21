@@ -191,7 +191,7 @@ class Fifteen(QWidget):
         del nums[nums.index(str(self.button03.text()))]
 
     def change_board(self, x, y):
-        if x in range(20, 101) and y in range(20, 135):
+        if x in range(20, 101) and y in range(20, 99):
             move = self.move_button()
             if move == "Down":
                 txt = self.button10.text()
@@ -208,7 +208,7 @@ class Fifteen(QWidget):
                 msg.setWindowTitle("Error!")
                 msg.setText("Invalid move option!")
                 msg.exec_()
-        elif x in range(220, 301) and y in range(20, 135):
+        elif x in range(220, 301) and y in range(20, 99):
             move = self.move_button()
             if move == "Down":
                 txt = self.button12.text()
@@ -230,7 +230,7 @@ class Fifteen(QWidget):
                 msg.setWindowTitle("Error!")
                 msg.setText("Invalid move option!")
                 msg.exec_()
-        elif x in range(120, 201) and y in range(20, 135):
+        elif x in range(120, 201) and y in range(20, 99):
             move = self.move_button()
             if move == "Down":
                 txt = self.button11.text()
@@ -252,7 +252,7 @@ class Fifteen(QWidget):
                 msg.setWindowTitle("Error!")
                 msg.setText("Invalid move option!")
                 msg.exec_()
-        elif x in range(320, 401) and y in range(20, 135):
+        elif x in range(320, 401) and y in range(20, 99):
             move = self.move_button()
             if move == "Down":
                 txt = self.button13.text()
@@ -269,7 +269,7 @@ class Fifteen(QWidget):
                 msg.setWindowTitle("Error!")
                 msg.setText("Invalid move option!")
                 msg.exec_()
-        elif x in range(20, 101) and y in range(154, 268):
+        elif x in range(20, 101) and y in range(118, 196):
             move = self.move_button()
             if move == "Up":
                 txt = self.button10.text()
@@ -285,13 +285,13 @@ class Fifteen(QWidget):
                 txt = self.button10.text()
                 self.button10.setText(self.button11.text())
                 self.button11.setText(txt)
-                self.board[1, 1], self.board[1, 0] = self.board[1, 1], self.board[1, 0]
+                self.board[1, 1], self.board[1, 0] = self.board[1, 0], self.board[1, 1]
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error!")
                 msg.setText("Invalid move option!")
                 msg.exec_()
-        elif x in range(120, 201) and y in range(154, 268):
+        elif x in range(120, 201) and y in range(118, 196):
             move = self.move_button()
             if move == "Up":
                 txt = self.button11.text()
@@ -313,7 +313,7 @@ class Fifteen(QWidget):
                 self.button11.setText(self.button10.text())
                 self.button10.setText(txt)
                 self.board[1, 0], self.board[1, 1] = self.board[1, 1], self.board[1, 0]
-        elif x in range(220, 301) and y in range(154, 268):
+        elif x in range(220, 301) and y in range(118, 196):
             move = self.move_button()
             if move == "Up":
                 txt = self.button12.text()
@@ -335,6 +335,195 @@ class Fifteen(QWidget):
                 self.button12.setText(self.button11.text())
                 self.button11.setText(txt)
                 self.board[1, 2], self.board[1, 1] = self.board[1, 1], self.board[1, 1]
+        elif x in range(320, 401) and y in range(118, 196):
+            move = self.move_button()
+            if move == "Up":
+                txt = self.button13.text()
+                self.button13.setText(self.button03.text())
+                self.button03.setText(txt)
+                self.board[0, 3], self.board[1, 3] = self.board[1, 3], self.board[0, 3]
+            elif move == "Down":
+                txt = self.button13.text()
+                self.button13.setText(self.button23.text())
+                self.button23.setText(txt)
+                self.board[2, 3], self.board[1, 3] = self.board[1, 3], self.board[2, 3]
+            elif move == "Left":
+                txt = self.button13.text()
+                self.button13.setText(self.button12.text())
+                self.button12.setText(txt)
+                self.board[1, 2], self.board[1, 3] = self.board[1, 3], self.board[1, 2]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(20, 101) and y in range(216, 294):
+            move = self.move_button()
+            if move == "Down":
+                txt = self.button20.text()
+                self.button20.setText(self.button30.text())
+                self.button30.setText(txt)
+                self.board[2, 0], self.board[3, 0] = self.board[3, 0], self.board[2, 0]
+            elif move == "Right":
+                txt = self.button21.text()
+                self.button21.setText(self.button20.text())
+                self.button20.setText(txt)
+                self.board[2, 1], self.board[2, 0] = self.board[2, 0], self.board[2, 1]
+            elif move == "Up":
+                txt = self.button21.text()
+                self.button21.setText(self.button11.text())
+                self.button11.setText(txt)
+                self.board[2, 1], self.board[1, 1] = self.board[1, 1], self.board[2, 1]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(220, 301) and y in range(216, 294):
+            move = self.move_button()
+            if move == "Down":
+                txt = self.button22.text()
+                self.button22.setText(self.button32.text())
+                self.button32.setText(txt)
+                self.board[2, 2], self.board[3, 2] = self.board[3, 2], self.board[2, 2]
+            elif move == "Right":
+                txt = self.button23.text()
+                self.button23.setText(self.button22.text())
+                self.button22.setText(txt)
+                self.board[2, 2], self.board[2, 3] = self.board[2, 3], self.board[2, 2]
+            elif move == "Left":
+                txt = self.button21.text()
+                self.button21.setText(self.button22.text())
+                self.button22.setText(txt)
+                self.board[2, 2], self.board[2, 1] = self.board[2, 1], self.board[2, 2]
+            else:
+                txt = self.button12.text()
+                self.button12.setText(self.button22.text())
+                self.button22.setText(txt)
+                self.board[2, 2], self.board[1, 2] = self.board[1, 2], self.board[2, 2]
+
+        elif x in range(120, 201) and y in range(216, 294):
+            move = self.move_button()
+            if move == "Down":
+                txt = self.button31.text()
+                self.button31.setText(self.button21.text())
+                self.button21.setText(txt)
+                self.board[2, 1], self.board[3, 1] = self.board[3, 1], self.board[2, 1]
+            elif move == "Right":
+                txt = self.button22.text()
+                self.button22.setText(self.button21.text())
+                self.button21.setText(txt)
+                self.board[2, 2], self.board[2, 1] = self.board[2, 1], self.board[2, 2]
+            elif move == "Left":
+                txt = self.button20.text()
+                self.button20.setText(self.button21.text())
+                self.button21.setText(txt)
+                self.board[2, 0], self.board[2, 1] = self.board[2, 1], self.board[2, 0]
+            else:
+                txt = self.button11.text()
+                self.button11.setText(self.button21.text())
+                self.button21.setText(txt)
+                self.board[1, 1], self.board[2, 1] = self.board[2, 1], self.board[1, 1]
+        elif x in range(320, 401) and y in range(216, 294):
+            move = self.move_button()
+            if move == "Down":
+                txt = self.button33.text()
+                self.button33.setText(self.button23.text())
+                self.button23.setText(txt)
+                self.board[3, 3], self.board[2, 3] = self.board[2, 3], self.board[3, 3]
+            elif move == "Left":
+                txt = self.button22.text()
+                self.button22.setText(self.button21.text())
+                self.button21.setText(txt)
+                self.board[2, 2], self.board[2, 1] = self.board[2, 1], self.board[2, 2]
+            elif move == "Up":
+                txt = self.button13.text()
+                self.button13.setText(self.button23.text())
+                self.button23.setText(txt)
+                self.board[1, 3], self.board[2, 3] = self.board[2, 3], self.board[1, 3]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(20, 101) and y in range(312, 391):
+            move = self.move_button()
+            if move == "Up":
+                txt = self.button20.text()
+                self.button20.setText(self.button30.text())
+                self.button30.setText(txt)
+                self.board[3, 0], self.board[2, 0] = self.board[2, 0], self.board[3, 0]
+            elif move == "Right":
+                txt = self.button30.text()
+                self.button30.setText(self.button31.text())
+                self.button31.setText(txt)
+                self.board[3, 1], self.board[3, 0] = self.board[3, 0], self.board[3, 1]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(120, 201) and y in range(312, 391):
+            move = self.move_button()
+            if move == "Up":
+                txt = self.button31.text()
+                self.button31.setText(self.button21.text())
+                self.button21.setText(txt)
+                self.board[2, 1], self.board[3, 1] = self.board[3, 1], self.board[2, 1]
+            elif move == "Left":
+                txt = self.button31.text()
+                self.button31.setText(self.button30.text())
+                self.button30.setText(txt)
+                self.board[3, 0], self.board[3, 1] = self.board[3, 1], self.board[3, 0]
+            elif move == "Right":
+                txt = self.button31.text()
+                self.button31.setText(self.button32.text())
+                self.button32.setText(txt)
+                self.board[3, 2], self.board[3, 1] = self.board[3, 1], self.board[3, 2]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(220, 301) and y in range(312, 391):
+            move = self.move_button()
+            if move == "Up":
+                txt = self.button32.text()
+                self.button32.setText(self.button22.text())
+                self.button32.setText(txt)
+                self.board[3, 2], self.board[2, 2] = self.board[2, 2], self.board[3, 2]
+            elif move == "Left":
+                txt = self.button32.text()
+                self.button32.setText(self.button31.text())
+                self.button31.setText(txt)
+                self.board[3, 2], self.board[3, 1] = self.board[3, 1], self.board[3, 2]
+            elif move == "Right":
+                txt = self.button32.text()
+                self.button32.setText(self.button33.text())
+                self.button33.setText(txt)
+                self.board[3, 3], self.board[3, 2] = self.board[3, 2], self.board[3, 3]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
+        elif x in range(320, 401) and y in range(312, 391):
+            move = self.move_button()
+            if move == "Up":
+                txt = self.button33.text()
+                self.button33.setText(self.button23.text())
+                self.button23.setText(txt)
+                self.board[2, 3], self.board[3, 3] = self.board[2, 3], self.board[3, 3]
+            elif move == "Left":
+                txt = self.button33.text()
+                self.button33.setText(self.button32.text())
+                self.button32.setText(txt)
+                self.board[3, 2], self.board[3, 3] = self.board[3, 3], self.board[3, 2]
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error!")
+                msg.setText("Invalid move option!")
+                msg.exec_()
 
     def move_button(self):
         move, ok_pressed = QInputDialog.getItem(
