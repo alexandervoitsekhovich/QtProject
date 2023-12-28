@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>408</height>
+    <height>442</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -247,6 +247,19 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="check_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>419</y>
+     <width>381</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Завершить!</string>
+   </property>
   </widget>
  </widget>
  <resources/>

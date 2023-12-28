@@ -10,21 +10,24 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
-def answ_check(game_mode, user_answ):
-    if bool(game_mode):
-        answ_arr = np.array(range(9))
-        answ_arr = answ_arr.reshape(3, 3)
-        if answ_arr == user_answ:
-            return True
-        else:
-            return False
-    else:
-        answ_arr = np.array(range(16))
-        answ_arr = answ_arr.reshape(4, 4)
-        if answ_arr == user_answ:
-            return True
-        else:
-            return False
+class Win(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("win.ui", self)
+        self.btn.clicked.connect(self.run)
+
+    def run(self):
+        self.hide()
+
+
+class Lose(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("lose.ui", self)
+        self.btn.clicked.connect(self.run)
+
+    def run(self):
+        self.hide()
 
 
 class StartPage(QMainWindow):
@@ -32,17 +35,6 @@ class StartPage(QMainWindow):
         super().__init__()
         uic.loadUi("startPage.ui", self)
         self.startButton.clicked.connect(self.run_dialogue)
-        self.timeModeButton.toggled.connect(self.time_mode)
-        self.resultsButton.clicked.connect(self.show_results)
-
-    def time_mode(self):
-        if self.timeModeButton.isChecked():
-            ...
-        else:
-            ...
-
-    def show_results(self):
-        ...
 
     def run_eight(self):
         self.window_eight = Eight()
@@ -91,13 +83,13 @@ class MouseHelper(QObject):
 class Eight(QWidget):
     def __init__(self):
         self.NUMS = ["1", "2", "3", "4", "5", "6", "7", "8", ""]
+        self.board = np.zeros(9, dtype=np.int32).reshape(3, 3)
         super().__init__()
         uic.loadUi("eight.ui", self)
         self.setup_board()
 
     def setup_board(self):
         nums = self.NUMS
-        self.board = np.zeros(9, dtype=np.int32).reshape(3, 3)
         self.button00.setText(random.choice(nums))
         self.board[0, 0] = int(self.button00.text()) if self.button00.text() != "" else 0
         del nums[nums.index(str(self.button00.text()))]
@@ -125,6 +117,17 @@ class Eight(QWidget):
         self.button22.setText(random.choice(nums))
         self.board[2, 2] = int(self.button22.text()) if self.button22.text() != "" else 0
         del nums[nums.index(str(self.button22.text()))]
+        self.check_button.clicked.connect(lambda: self.answ_check(self.board))
+
+    def answ_check(self, user_answ):
+        self.answ_arr = np.array(range(9))
+        self.answ_arr = self.answ_arr.reshape(3, 3)
+        if np.array_equal(self.answ_arr, user_answ):
+            self.win_screen = Win()
+            self.win_screen.show()
+        else:
+            self.lost_screen = Lose()
+            self.lost_screen.show()
 
     def change_board(self, x, y):
         if x in range(20, 128) and y in range(20, 135):
@@ -373,6 +376,17 @@ class Fifteen(QWidget):
         self.button03.setText(random.choice(nums))
         self.board[0, 3] = int(self.button03.text()) if self.button03.text() != "" else 0
         del nums[nums.index(str(self.button03.text()))]
+        self.check_button.clicked.connect(lambda: self.answ_check(self.board))
+
+    def answ_check(self, user_answ):
+        self.answ_arr = np.array(range(9))
+        self.answ_arr = self.answ_arr.reshape(3, 3)
+        if np.array_equal(self.answ_arr, user_answ):
+            self.win_screen = Win()
+            self.win_screen.show()
+        else:
+            self.lost_screen = Lose()
+            self.lost_screen.show()
 
     def change_board(self, x, y):
         if x in range(20, 101) and y in range(20, 99):
